@@ -6,6 +6,7 @@ int main(int argc, char *argv[]) {
   Display *dpy;
   int screen;
   Window win;
+  Window childwin;
   XEvent _event;
 
 
@@ -16,19 +17,23 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
   screen = DefaultScreen(dpy);
-  win = XCreateSimpleWindow(dpy, RootWindow(dpy, screen), 200, 200, 500, 300, 1, BlackPixel(dpy, screen), WhitePixel(dpy, screen));
+  win = XCreateSimpleWindow(dpy, RootWindow(dpy, screen), 200, 200, 500, 300, 1, BlackPixel(dpy, screen), WhitePixel(dpy, screen ));
 
   XSelectInput(dpy, win, ExposureMask | KeyPressMask);
   XMapWindow(dpy, win);
   while(1) {
     XNextEvent(dpy, &_event);
-    if(_event.xany.window == childwin) {
-      if(even.type == Expose) {
-        XDrawLine(dpy, childwin, DefaultGC(dpy, screen), 10, 10, 60, 60);
-      }
-    }
   }
 
+  /*child window*/
+
+  childwin = XCreateSimpleWindow(dpy, RootWindow(dpy, win), 20, 20, 200, 100, 1, BlackPixel(dpy, screen), WhitePixel(dpy, screen ));
+
+  XSelectInput(dpy, childwin, ExposureMask | KeyPressMask);
+  XMapWindow(dpy, childwin);
+  while(1) {
+    XNextEvent(dpy, &_event);
+  }
 
   return 0;
 }
