@@ -15,6 +15,8 @@ int main(int argc, char *argv[]) {
   Colormap;
   Xcolor button_color;
   Xcolor lightgray_color, darkgray_color;
+  XGCValues gcv_lightgray, gcv_darkgray;
+  GC gc_lightgray, gc_darkgray;
 
 
   dpy = XOpenDisplay(NULL);
@@ -34,6 +36,8 @@ int main(int argc, char *argv[]) {
 
   /*child window*/
 
+  
+
   childwin = XCreateSimpleWindow(dpy, RootWindow(dpy, win), 20, 20, 200, 100, 1, BlackPixel(dpy, screen), WhitePixel(dpy, screen ));
 
   XSelectInput(dpy, childwin, ExposureMask | KeyPressMask);
@@ -43,4 +47,4 @@ int main(int argc, char *argv[]) {
   }
 
   return 0;
-}
+} 
