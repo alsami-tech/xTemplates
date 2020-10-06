@@ -1,2 +1,5 @@
-# xTemplates
-Templates for the XLib library. This is just so people don't have to write boilerplate code over and over again.
+#Xlib Templates
+
+**These are to be used as boilerplate, we wrote these peices of boilerplate so you don't have to.**
+
+> > > > > > Under Expat (MIT) Liscense
